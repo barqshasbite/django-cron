@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 from django.db import models, migrations
 
@@ -34,14 +33,25 @@ class Migration(migrations.Migration):
                 ),
             ],
         ),
-        migrations.AlterIndexTogether(
-            name='cronjoblog',
-            index_together=set(
-                [
-                    ('code', 'is_success', 'ran_at_time'),
-                    ('code', 'start_time', 'ran_at_time'),
-                    ('code', 'start_time'),
-                ]
+        migrations.AddIndex(
+            model_name='cronjoblog',
+            index=models.Index(
+                fields=['code', 'is_success', 'ran_at_time'],
+                name='django_cron_cronjoblog_63e2740d',
+            ),
+        ),
+        migrations.AddIndex(
+            model_name='cronjoblog',
+            index=models.Index(
+                fields=['code', 'start_time', 'ran_at_time'],
+                name='django_cron_cronjoblog_1fe0e40b',
+            ),
+        ),
+        migrations.AddIndex(
+            model_name='cronjoblog',
+            index=models.Index(
+                fields=['code', 'start_time'],
+                name='django_cron_cronjoblog_495fb183',
             ),
         ),
     ]
